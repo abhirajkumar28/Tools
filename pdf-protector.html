@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online PDF protector tool - add passwords, set permissions, and compress PDF files securely in your browser.">
+    <meta name="keywords" content="PDF protector, PDF password, PDF security, PDF permissions, PDF compression, PDF tool">
+    <title>PDF Protector Pro - Secure Your PDF Files Online</title>
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --medium-gray: #757575;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        main {
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .tool-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--medium-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .upload-area p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-area input {
+            display: none;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .btn-secondary {
+            background-color: var(--medium-gray);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #616161;
+        }
+        
+        .options-section {
+            margin: 2rem 0;
+        }
+        
+        .options-section h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+        }
+        
+        .checkbox-group {
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-item {
+            margin-bottom: 0.5rem;
+        }
+        
+        .checkbox-item input {
+            margin-right: 0.5rem;
+        }
+        
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-item input {
+            margin-right: 0.5rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .ad-container {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            margin: 2rem 0;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 1rem;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Result section */
+        .result-section {
+            display: none;
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+        }
+        
+        .result-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .download-btn {
+            margin-top: 1rem;
+        }
+    </style>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">PDF Protector Pro</a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- First AdSense Ad Unit -->
+        <div class="ad-container">
+            <!-- AdSense Ad Unit 1 -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_UNIT_ID_1"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section class="hero">
+            <h1>Secure Your PDF Documents</h1>
+            <p>Add passwords, set permissions, and compress your PDF files online for free. No registration required.</p>
+        </section>
+        
+        <section class="tool-container">
+            <div class="tool-header">
+                <h2>PDF Protector Tool</h2>
+                <p>Upload your PDF file to add security features</p>
+            </div>
+            
+            <div class="upload-area" id="uploadArea">
+                <i>📄</i>
+                <p>Drag & drop your PDF file here or click to browse</p>
+                <p class="small">(Max file size: 25MB)</p>
+                <input type="file" id="pdfInput" accept=".pdf">
+            </div>
+            
+            <div id="fileNameDisplay" style="display: none; margin-bottom: 1rem; text-align: center; font-weight: 500;"></div>
+            
+            <div class="options-section">
+                <h3>Security Options</h3>
+                
+                <div class="form-group">
+                    <label for="password">Password (optional)</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter password to protect PDF">
+                </div>
+                
+                <div class="form-group">
+                    <label>Permissions</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="allowPrinting" checked>
+                            <label for="allowPrinting">Allow printing</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="allowCopying" checked>
+                            <label for="allowCopying">Allow copying text</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="allowModification" checked>
+                            <label for="allowModification">Allow modifications</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="allowAnnotations" checked>
+                            <label for="allowAnnotations">Allow annotations</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Compression Level</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="compressionLow" name="compression" value="low" checked>
+                            <label for="compressionLow">Low (better quality)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="compressionMedium" name="compression" value="medium">
+                            <label for="compressionMedium">Medium (balanced)</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="compressionHigh" name="compression" value="high">
+                            <label for="compressionHigh">High (smaller file)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="processBtn" class="btn">Protect PDF</button>
+                <button id="resetBtn" class="btn btn-secondary">Reset</button>
+            </div>
+            
+            <div id="spinner" class="spinner"></div>
+            
+            <div id="resultSection" class="result-section">
+                <h3>Your PDF is protected and ready!</h3>
+                <p>File size reduced by <span id="sizeReduction">0</span>%</p>
+                <button id="downloadBtn" class="btn download-btn">Download Protected PDF</button>
+            </div>
+        </section>
+        
+        <!-- Second AdSense Ad Unit -->
+        <div class="ad-container">
+            <!-- AdSense Ad Unit 2 -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_UNIT_ID_2"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section class="info-section">
+            <h2>How to Protect Your PDF Files</h2>
+            <ol>
+                <li>Upload your PDF file using the button above</li>
+                <li>Set a password (optional but recommended for sensitive documents)</li>
+                <li>Choose which permissions to allow for the document</li>
+                <li>Select your preferred compression level</li>
+                <li>Click "Protect PDF" and download your secured file</li>
+            </ol>
+            
+            <h2>Why Use Our PDF Protector?</h2>
+            <ul>
+                <li><strong>Secure:</strong> All processing happens in your browser - your files never leave your device</li>
+                <li><strong>Free:</strong> No hidden charges or subscriptions</li>
+                <li><strong>Fast:</strong> Protect your documents in seconds</li>
+                <li><strong>No watermarks:</strong> We don't add any branding to your files</li>
+                <li><strong>Privacy focused:</strong> We don't store your documents on our servers</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+            </div>
+            <p class="copyright">© 2023 PDF Protector Pro. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.getElementById('uploadArea');
+            const pdfInput = document.getElementById('pdfInput');
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+            const processBtn = document.getElementById('processBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const spinner = document.getElementById('spinner');
+            const resultSection = document.getElementById('resultSection');
+            const downloadBtn = document.getElementById('downloadBtn');
+            
+            let selectedFile = null;
+            
+            // Handle drag and drop
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#4285f4';
+                uploadArea.style.backgroundColor = 'rgba(66, 133, 244, 0.05)';
+            });
+            
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.borderColor = '#757575';
+                uploadArea.style.backgroundColor = 'transparent';
+            });
+            
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#757575';
+                uploadArea.style.backgroundColor = 'transparent';
+                
+                if (e.dataTransfer.files.length) {
+                    handleFileSelection(e.dataTransfer.files[0]);
+                }
+            });
+            
+            // Handle click to browse
+            uploadArea.addEventListener('click', () => {
+                pdfInput.click();
+            });
+            
+            pdfInput.addEventListener('change', () => {
+                if (pdfInput.files.length) {
+                    handleFileSelection(pdfInput.files[0]);
+                }
+            });
+            
+            function handleFileSelection(file) {
+                // Check if file is PDF
+                if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                    alert('Please select a PDF file.');
+                    return;
+                }
+                
+                // Check file size (25MB max)
+                if (file.size > 25 * 1024 * 1024) {
+                    alert('File size exceeds 25MB limit.');
+                    return;
+                }
+                
+                selectedFile = file;
+                fileNameDisplay.textContent = `Selected file: ${file.name}`;
+                fileNameDisplay.style.display = 'block';
+            }
+            
+            // Process button click
+            processBtn.addEventListener('click', () => {
+                if (!selectedFile) {
+                    alert('Please select a PDF file first.');
+                    return;
+                }
+                
+                // Show spinner
+                spinner.style.display = 'block';
+                processBtn.disabled = true;
+                
+                // Simulate processing (in a real app, you would use a PDF library here)
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    
+                    // Get options
+                    const password = document.getElementById('password').value;
+                    const allowPrinting = document.getElementById('allowPrinting').checked;
+                    const allowCopying = document.getElementById('allowCopying').checked;
+                    const allowModification = document.getElementById('allowModification').checked;
+                    const allowAnnotations = document.getElementById('allowAnnotations').checked;
+                    
+                    const compressionLevel = document.querySelector('input[name="compression"]:checked').value;
+                    
+                    // Show result (simulated)
+                    const sizeReduction = compressionLevel === 'low' ? 10 : 
+                                         compressionLevel === 'medium' ? 30 : 50;
+                    document.getElementById('sizeReduction').textContent = sizeReduction;
+                    
+                    resultSection.style.display = 'block';
+                    processBtn.disabled = false;
+                    
+                    // Scroll to result
+                    resultSection.scrollIntoView({ behavior: 'smooth' });
+                }, 2000);
+            });
+            
+            // Download button click (simulated)
+            downloadBtn.addEventListener('click', () => {
+                alert('In a real implementation, this would download the protected PDF file.');
+            });
+            
+            // Reset button click
+            resetBtn.addEventListener('click', () => {
+                selectedFile = null;
+                pdfInput.value = '';
+                fileNameDisplay.style.display = 'none';
+                document.getElementById('password').value = '';
+                document.getElementById('allowPrinting').checked = true;
+                document.getElementById('allowCopying').checked = true;
+                document.getElementById('allowModification').checked = true;
+                document.getElementById('allowAnnotations').checked = true;
+                document.getElementById('compressionLow').checked = true;
+                resultSection.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
