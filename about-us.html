@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Toolkit Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7ff;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        /* About Content Styling */
+        .about-page {
+            padding: 4rem 0;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .highlight-box {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #adb5bd;
+        }
+
+        @media (max-width: 768px) {
+            .about-header h1 {
+                font-size: 2rem;
+            }
+            .about-content {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="logo-text">Tool<span>Kit</span> Pro</div>
+            </a>
+        </div>
+    </header>
+
+    <!-- About Page Content -->
+    <section class="about-page">
+        <div class="container">
+            <div class="about-header">
+                <h1>About Toolkit Pro</h1>
+            </div>
+            
+            <div class="about-content">
+                <p>Welcome to <strong>Toolkit Pro</strong> — your all-in-one solution for quick and efficient file management.</p>
+                
+                <p>At Toolkit Pro, we provide a powerful suite of online tools to help you compress images and PDFs, resize photos, protect your documents with passwords, and count files — all in one place. No installations, no sign-ups, just fast and reliable tools at your fingertips.</p>
+                
+                <div class="highlight-box">
+                    <p>Founded by <strong>Abhiraj Kumar</strong>, Toolkit Pro is built with a mission to make digital tools simple, secure, and accessible for everyone — from students and freelancers to professionals and businesses.</p>
+                </div>
+                
+                <p>We respect your privacy. That's why none of your files are stored or shared — everything is processed instantly and safely.</p>
+                
+                <p>Toolkit Pro is here to boost your productivity with a clean interface and blazing-fast performance.</p>
+                
+                <p class="tagline">Your digital toolbox. Anytime, anywhere.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2023 ToolKit Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
