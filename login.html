@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup - ToolKit Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --success: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        /* Auth Section */
+        .auth-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 2rem 0;
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .auth-header {
+            margin-bottom: 2rem;
+        }
+
+        .auth-header h1 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-header p {
+            color: var(--gray);
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray);
+            border-bottom: 3px solid transparent;
+        }
+
+        .auth-tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .auth-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+        }
+
+        .auth-btn:hover {
+            background: var(--secondary);
+        }
+
+        .auth-footer {
+            margin-top: 2rem;
+            color: var(--gray);
+        }
+
+        .auth-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .error-message {
+            color: #f72585;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .success-message {
+            color: var(--success);
+            font-size: 1rem;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #adb5bd;
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="logo-text">Tool<span>Kit</span> Pro</div>
+            </a>
+        </div>
+    </header>
+
+    <!-- Auth Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h1>Welcome to ToolKit Pro</h1>
+                    <p>Access your tools and preferences</p>
+                </div>
+                
+                <div class="auth-tabs">
+                    <div class="auth-tab active" data-tab="login">Login</div>
+                    <div class="auth-tab" data-tab="signup">Sign Up</div>
+                </div>
+                
+                <div id="success-message" class="success-message"></div>
+                
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                        <div id="login-email-error" class="error-message">Please enter a valid email</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required minlength="6">
+                        <div id="login-password-error" class="error-message">Password must be at least 6 characters</div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Login</button>
+                    
+                    <div class="auth-footer">
+                        <p><a href="#" id="forgot-password">Forgot password?</a></p>
+                    </div>
+                </form>
+                
+                <!-- Signup Form -->
+                <form id="signup-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                        <div id="signup-name-error" class="error-message">Please enter your name</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                        <div id="signup-email-error" class="error-message">Please enter a valid email</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" required minlength="6">
+                        <div id="signup-password-error" class="error-message">Password must be at least 6 characters</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-confirm-password">Confirm Password</label>
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm your password" required>
+                        <div id="signup-confirm-error" class="error-message">Passwords don't match</div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Create Account</button>
+                    
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2023 ToolKit Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab Switching
+        const tabs = document.querySelectorAll('.auth-tab');
+        const forms = document.querySelectorAll('.auth-form');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(f => f.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`${tab.dataset.tab}-form`).classList.add('active');
+            });
+        });
+        
+        // Switch between login/signup
+        document.getElementById('switch-to-login').addEventListener('click', (e) => {
+            e.preventDefault();
+            tabs.forEach(t => t.classList.remove('active'));
+            forms.forEach(f => f.classList.remove('active'));
+            
+            document.querySelector('[data-tab="login"]').classList.add('active');
+            document.getElementById('login-form').classList.add('active');
+        });
+        
+        // Form Validation
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        
+        // Mock User Database
+        let users = JSON.parse(localStorage.getItem('toolkit-pro-users')) || [];
+        
+        // Login Form
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            let isValid = true;
+            
+            // Reset errors
+            document.getElementById('login-email-error').style.display = 'none';
+            document.getElementById('login-password-error').style.display = 'none';
+            
+            // Validate email
+            if (!validateEmail(email)) {
+                document.getElementById('login-email-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length < 6) {
+                document.getElementById('login-password-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const user = users.find(u => u.email === email && u.password === password);
+                if (user) {
+                    showSuccess('Login successful! Redirecting...');
+                    // In a real app, you would redirect to dashboard
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html'; // Create this page
+                    }, 1500);
+                } else {
+                    showSuccess('Invalid credentials', false);
+                }
+            }
+        });
+        
+        // Signup Form
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+            let isValid = true;
+            
+            // Reset errors
+            document.getElementById('signup-name-error').style.display = 'none';
+            document.getElementById('signup-email-error').style.display = 'none';
+            document.getElementById('signup-password-error').style.display = 'none';
+            document.getElementById('signup-confirm-error').style.display = 'none';
+            
+            // Validate name
+            if (name.trim() === '') {
+                document.getElementById('signup-name-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!validateEmail(email)) {
+                document.getElementById('signup-email-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Check if email exists
+            if (users.some(u => u.email === email)) {
+                document.getElementById('signup-email-error').textContent = 'Email already registered';
+                document.getElementById('signup-email-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length < 6) {
+                document.getElementById('signup-password-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate confirm password
+            if (password !== confirmPassword) {
+                document.getElementById('signup-confirm-error').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                const newUser = {
+                    name,
+                    email,
+                    password // Note: In real app, never store plain passwords
+                };
+                
+                users.push(newUser);
+                localStorage.setItem('toolkit-pro-users', JSON.stringify(users));
+                
+                showSuccess('Account created successfully! Redirecting to login...');
+                
+                // Reset form
+                this.reset();
+                
+                // Switch to login after delay
+                setTimeout(() => {
+                    document.querySelector('[data-tab="login"]').click();
+                }, 2000);
+            }
+        });
+        
+        // Forgot Password
+        document.getElementById('forgot-password').addEventListener('click', (e) => {
+            e.preventDefault();
+            showSuccess('Password reset link would be sent to your email in a real implementation');
+        });
+        
+        // Show success/error message
+        function showSuccess(message, isSuccess = true) {
+            const successEl = document.getElementById('success-message');
+            successEl.textContent = message;
+            successEl.style.color = isSuccess ? '#4cc9f0' : '#f72585';
+            successEl.style.display = 'block';
+            
+            setTimeout(() => {
+                successEl.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
